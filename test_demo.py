@@ -82,12 +82,7 @@ class Wizard:
         for i in range(len(variants)):
             rbutton = Radiobutton(root, text = variants[i], variable = v, value = i + 1, command = lambda: btn1.config(state='normal'))
             rbutton.place(x = 180, y = 300 + i * 20)
-        
-        
-               
-        #Radiobutton(root, text = variants[0], variable = var, value = 1).place(x = 180, y = 300)
-        #Radiobutton(root, text = variants[1], variable = var, value = 2).place(x = 180, y = 325)
-        
+
         
     def pretty_text(self, pattern):
         y_position = 0  

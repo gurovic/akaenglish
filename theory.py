@@ -28,7 +28,7 @@ def excercise_room_minus():
      
 
 exercise_number = 1
-title = Label(root, text = "Задание №", font = 'tahoma 14')
+title = Label(root, text = "Теория №", font = 'tahoma 14')
 room = Label(root, text = exercise_number, font = 'tahoma 18')
 theory_parts_title = Label(root, text = "из", font = 'tahoma 14')
 theory_parts_label = Label(root, text = theory_parts, font = 'tahoma 18')
@@ -39,10 +39,10 @@ theory_text.insert(1.0, theory_list[exercise_number - 1])
 button_previous = Button(root, text = '<- Предыдущее', width = 14, height = 1, font = 'tahoma 14', command = excercise_room_minus)
 button_next = Button(root, text = 'Следующее ->', width = 13, height = 1, font = 'tahoma 14', command = excercise_room_plus)
 
-title.place(x = 170, y = 15)
-room.place(x = 280, y = 11)
-theory_parts_title.place(x = 300, y = 15)
-theory_parts_label.place(x = 330, y = 11)
+title.place(x = 175, y = 15)
+room.place(x = 275, y = 11)
+theory_parts_title.place(x = 295, y = 15)
+theory_parts_label.place(x = 325, y = 11)
 
 theory_text.place(x = 8, y = 50)
 button_previous.place(x = 50, y = 440)

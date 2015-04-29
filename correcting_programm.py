@@ -11,17 +11,26 @@ tasks_list = list(map(str, tasks.split('----------')))
 
 corrected_texts = [0] * tasks_parts
 
+def end_task():
+    exit_window.destroy()
+
 def excercise_room_plus():
     global exercise_number
     if exercise_number < tasks_parts:
         exercise_number += 1
         button_ready["bg"] = 'grey'
     else:
-        exit = Tk()
-        exit.title('Выход')
-        exit.geometry('250x100+575+210')
-        exit.resizable(False, False)        
-        exit.mainloop()
+        exit_window = Tk()
+        exit_window.title('Выход')
+        exit_window.geometry('250x100+575+210')
+        exit_window.resizable(False, False)
+        quit_question = Label(exit_window, text = "Вы хотите закончить упражнение?", font = 'tahoma 11')
+        quit_yes = Button(exit_window, text = 'Да', width = 5, height = 1, font = 'tahoma 14', command = end_task, fg = 'green')
+        quit_no = Button(exit_window, text = 'Нет', width = 5, height = 1, font = 'tahoma 14', command = end_task, fg = 'red')
+        quit_question.place(x = 1, y = 5)
+        quit_yes.place(x = 55, y = 40)
+        quit_no.place(x = 130, y = 40)
+        exit_window.mainloop()
         
     room["text"] = exercise_number
     tasks_text.delete('1.0', END)

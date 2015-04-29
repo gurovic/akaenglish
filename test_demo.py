@@ -87,13 +87,13 @@ class Wizard:
     def show_question(self, question, variants):
         self.pretty_text(question) 
         
-        btn1 = Button(self.root, text = 'Далее!', width = 10, height = 2, font = 'arial 10',  bg="red", command = lambda: self.next_question(v.get()), state=DISABLED)
+        btn1 = Button(self.root, text = 'Далее!', width = 10, height = 2, font = 'arial 10', command = lambda: self.next_question(v.get()), state = DISABLED)
         btn1.place(x = 450, y = 500)        
         
         v = IntVar()
         
         for i in range(len(variants)):
-            rbutton = Radiobutton(root, text = variants[i], variable = v, value = i + 1, command = lambda: btn1.config(state='normal',  bg="green"))
+            rbutton = Radiobutton(root, text = variants[i], variable = v, value = i + 1, command = lambda: btn1.config(state = 'normal'))
             rbutton.place(x = 180, y = 300 + i * 20)  
             
         Label(self.root, text = str(self.tests.num_of_question()) + " / " + str(self.tests.length()), font = 'arial 14').place(x = 900, y = 10)    

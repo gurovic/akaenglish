@@ -25,8 +25,21 @@ class Tests:
                 num += 1
         return num 
     
+    def show_results(self, answers):
+        Label(root, text = 'Результаты', font = 'arial 14' ).place(x = 600, y = 50)
+        y_pos = 100
+        for i in range(self.length()):
+            if answers.answer(i) == self.right_variants[i]:
+                Label(root, text = str(i + 1) + " +", font = 'arial 10').place(x = 600, y = y_pos)
+            else:
+                Label(root, text = str(i + 1) + " -", font = 'arial 10').place(x = 600, y = y_pos)
+            y_pos += 20    
+    
     def length(self):
-        return len(self.tests)            
+        return len(self.tests)
+    
+    def num_of_question(self):
+        return self.i
     
 class Answers:
     def __init__(self):
@@ -81,8 +94,11 @@ class Wizard:
         
         for i in range(len(variants)):
             rbutton = Radiobutton(root, text = variants[i], variable = v, value = i + 1, command = lambda: btn1.config(state='normal',  bg="green"))
-            rbutton.place(x = 180, y = 300 + i * 20)
-
+            rbutton.place(x = 180, y = 300 + i * 20)  
+            
+        Label(self.root, text = str(self.tests.num_of_question()) + " / " + str(self.tests.length()), font = 'arial 14').place(x = 900, y = 10)    
+            
+            
         
     def pretty_text(self, pattern):
         y_position = 0  
@@ -108,7 +124,8 @@ class Wizard:
         Label(self.root, text = "Тест закончен!", font = 'arial 14').place(x = 180, y = 60)
         num_of_right = self.tests.num_of_rights(self.answers)
         Label(self.root, text = "Верно " + str(num_of_right) + " из " + str(self.tests.length()), font = 'arial 14').place(x = 180, y = 150)
-        
+        self.tests.show_results(self.answers)
+        Label(self.root, text = 'Cпасибо за внимание!', font = 'arial 14').place(x = 180, y = 240)
         
 if __name__=='__main__':
     questions = ['1. Что выведет код ?&s = "Harry"!&print("Hello, "+(s)+"!")&',
